@@ -38,6 +38,10 @@ app.get('/', (req, res) => {
     res.send('hello mern creator..')
 })
 
+app.get('/home', (req, res) => {
+    res.send('You are in home ..')
+})
+
 // Global error 
 app.use(errorMiddleware);
 
