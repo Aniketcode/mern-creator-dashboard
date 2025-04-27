@@ -1,25 +1,25 @@
 import { apiSlice } from './apiSlice';
 const ADMIN_URL = import.meta.env.VITE_BACKEND_URL;
-// const DEPLOYED_URL = 'https://user-auth-backend-68nw.onrender.com';
+const DEPLOYED_URL = 'https://mern-creator-dashboard.vercel.app';
 
 export const adminApiSlice = apiSlice.injectEndpoints({
     endpoints : (builder) =>({
           getAllUsers: builder.query({
             query: () => ({
-              url: `${ADMIN_URL}/api/admin/users`,
+              url: `${DEPLOYED_URL}/api/admin/users`,
               method: 'GET',
             }),
           }),
           updateUserCredits: builder.mutation({
             query: (data) => ({
-              url: `${ADMIN_URL}/api/admin/update-credits`, 
+              url: `${DEPLOYED_URL}/api/admin/update-credits`, 
               method: 'POST',
               body: data,
             }),
           }),
           getFeedActivities: builder.query({
             query: () => ({
-              url: `${ADMIN_URL}/api/admin/activities`,
+              url: `${DEPLOYED_URL}/api/admin/activities`,
               method: 'GET',
             }),
           }),
