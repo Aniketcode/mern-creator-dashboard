@@ -60,6 +60,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
+import serverless from 'serverless-http'; 
 const app = express();
 
 import connectDB from './db/db.js';
@@ -97,9 +98,8 @@ app.use(errorMiddleware);
 
 // Connect to DB
 connectDB();
-app.listen(PORT, () => {
-            console.log(`🚀 Server started at: http://localhost:${PORT}`)
-        });
+
 // ⚡ NO app.listen(PORT) here on Vercel
+export const handler = serverless(app);  
 
 
