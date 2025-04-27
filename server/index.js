@@ -15,7 +15,7 @@ import adminRoute from './routes/adminRoutes.js';
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({ origin: process.env.DEPLOYED_FRONTEND_URL, credentials: true }));
+app.use(cors({ origin: "https://mern-creator-dashboard-iov5.vercel.app", credentials: true }));
 
 // Routes
 app.use('/api/user', userRoute);
