@@ -16,17 +16,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
-const allowedOrigins= ['https://mern-creator-dashboard-iov5.vercel.app'];
-app.use(cors({
-    origin : function (origin,cb){
-        if(!origin || allowedOrigins.includes(origin)){
-            cb(null,true)
-        }else{
-            cb(new Error("Not allowed by CORS"))
-        }
-    },
-    credentials : true,
-}));
+const corsOptions = {
+    origin: 'https://mern-creator-dashboard-k6wy.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials:true
+  }
+app.use(cors(corsOptions));
 
 // Routes
 app.use('/api/user', userRoute);
