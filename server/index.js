@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
 const corsOptions = {
-    origin: '*',
+    origin: 'https://mern-creator-dashboard-bhol.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials:true
   }
