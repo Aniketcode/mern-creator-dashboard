@@ -15,7 +15,18 @@ import adminRoute from './routes/adminRoutes.js';
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({ origin: "https://mern-creator-dashboard-iov5.vercel.app", credentials: true }));
+
+const allowedOrigins= ['https://mern-creator-dashboard-iov5.vercel.app'];
+app.use(cors({
+    origin : function (origin,cb){
+        if(!origin || allowedOrigins.includes(origin)){
+            cb(null,true)
+        }else{
+            cb(new Error("Not allowed by CORS"))
+        }
+    },
+    credentials : true,
+}));
 
 // Routes
 app.use('/api/user', userRoute);
