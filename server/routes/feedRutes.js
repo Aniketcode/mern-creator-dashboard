@@ -11,7 +11,8 @@ import {
 const router = express.Router();
 
 // @api/feed/aggregate
-router.get('/aggregate', authProtect, getAggregatedFeed);
+// router.get('/aggregate', authProtect, getAggregatedFeed);
+router.get('/aggregate', getAggregatedFeed);
 
 // @api/feed/save
 router.post('/save', authProtect, savePost);
