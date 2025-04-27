@@ -38,8 +38,9 @@ app.use('/api/admin', adminRoute);
 //     res.send('hello mern creator..')
 // })
 
-app.get('/home', (req, res) => {
-    res.send('You are in home ..')
+
+app.get('/', (req, res) => {
+    res.json({message:'Home'});
 })
 
 // Global error 
