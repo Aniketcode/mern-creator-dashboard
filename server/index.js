@@ -16,13 +16,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
-const allowedOrigins = [
-    'https://mern-creator-dashboard-bhol.vercel.app',
-    'http://localhost:5173'
-];
+// const allowedOrigins = [
+    // 'https://mern-creator-dashboard-bhol.vercel.app',
+//     'http://localhost:5173'
+// ];
 
 app.use(cors({
-    origin: allowedOrigins,
+    origin: 'https://mern-creator-dashboard-bhol.vercel.app',
     credentials: true
 }));
 
