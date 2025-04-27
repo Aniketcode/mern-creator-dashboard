@@ -16,18 +16,16 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
-const corsOptions = {
-    origin: 'https://mern-creator-dashboard-bhol.vercel.app',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials:true
-  }
-app.use(cors(corsOptions));
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*'); 
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-});
+const allowedOrigins = [
+    'https://mern-creator-dashboard-bhol.vercel.app',
+    'http://localhost:5173'
+];
+
+app.use(cors({
+    origin: allowedOrigins,
+    credentials: true
+}));
+
 // Routes
 app.use('/api/user', userRoute);
 app.use('/api/feed', feedRoute);
