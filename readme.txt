@@ -42,3 +42,17 @@ Frontend:
  12.Responsive across all devices leverages with tailwindcss media queries 
  13.Clean & modular ui  
  14. Admin dashboard to manage users lists, recent activities of users, can add credits
+
+
+***** Deployement Process *****
+
+ Step 1. Add gitignore file at Frontend & Backend side to ignore env,node_modules etc
+ Step 2. Added cors policy to server index file
+ Step 3. Added some configuration in vite.config.js to ensure server work properly 
+ Step 4. Push the code to github
+ Step 5. Login to render --> choose web service for Backend & deploy the server with env variables 
+ Step 6. Login to render --> choose  static service for Frontend & deploy with env variables if present
+ Step 7. Copy Backend deployed & Frontend deployed url & paste to server env file also in frontend file if present
+ Step 8. Redeploy by clicking button
+ Step 9 . Now whatever changes will be done , it automatically pushed & deploy
+ Step 10. Open frontend deployed url to browser and run gthe web app
