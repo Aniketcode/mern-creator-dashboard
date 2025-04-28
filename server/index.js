@@ -31,12 +31,6 @@ app.use('/api/credit', creditRoute);
 app.use('/api/admin', adminRoute);
 
 
-
-// /app.get('/', (req, res) => {
-//     res.send('hello mern creator..')
-// })
-
-
 app.get('/', (req, res) => {
     res.json({message:'Home'});
 })

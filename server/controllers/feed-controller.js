@@ -3,8 +3,12 @@ import User from '../models/User.js';
 
 export const getAggregatedFeed = async (req, res, next) => {
   try {
-    const reddit = await axios.get(process.env.VITE_REDDIT_URL);
-    const devto = await axios.get(process.env.VITE_DEVTO_URL);
+    const reddit = await axios.get(process.env.REDDIT_URL,{
+      headers: {
+        'User-Agent': 'MernCreatorApp/1.0' 
+      }
+    });
+    const devto = await axios.get(process.env.DEVTO_URL);
 
     const redditPosts = reddit.data.data.children.map(c => ({
       id: c.data.id,
