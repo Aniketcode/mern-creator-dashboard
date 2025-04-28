@@ -3,13 +3,30 @@ import User from '../models/User.js';
 
 export const getAggregatedFeed = async (req, res, next) => {
   try {
-    const reddit = await axios.get(process.env.REDDIT_URL,{
+    const auth = Buffer.from(`${process.env.REDDIT_CLIENT_ID}:${process.env.REDDIT_CLIENT_SECRET}`).toString('base64');
+
+    const tokenResponse = await axios.post(
+      'https://www.reddit.com/api/v1/access_token',
+      'grant_type=client_credentials',
+      {
+        headers: {
+          'Authorization': `Basic ${auth}`,
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'User-Agent': 'MernCreatorApp/1.0'
+        }
+      }
+    );
+
+    const accessToken = tokenResponse.data.access_token;
+
+    const reddit = await axios.get(process.env.REDDIT_URL, {
       headers: {
-        'User-Agent': 'MernCreatorApp/1.0' 
+        'Authorization': `Bearer ${accessToken}`,
+        'User-Agent': 'MernCreatorApp/1.0'
       }
     });
-    const devto = await axios.get(process.env.DEVTO_URL);
 
+    const devto = await axios.get(process.env.DEVTO_URL);
     const redditPosts = reddit.data.data.children.map(c => ({
       id: c.data.id,
       title: c.data.title,
@@ -27,14 +44,17 @@ export const getAggregatedFeed = async (req, res, next) => {
       cover_image: post.cover_image,
     }));
 
+    // 5. Send combined response
     res.json({
       reddit: redditPosts,
       devto: devtoPosts,
     });
+
   } catch (err) {
     next(err);
   }
 };
+
 
 export const savePost = async (req, res, next) => {
   try {
