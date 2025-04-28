@@ -1,6 +1,6 @@
 import { apiSlice } from './apiSlice';
-const ADMIN_URL = import.meta.env.VITE_BACKEND_URL;
-const DEPLOYED_URL = 'https://mern-creator-dashboard-puce.vercel.app';
+const DEPLOYED_URL = import.meta.env.VITE_BACKEND_URL;
+// const DEPLOYED_URL = 'https://mern-creator-dashboard-puce.vercel.app';
 
 export const adminApiSlice = apiSlice.injectEndpoints({
     endpoints : (builder) =>({
